@@ -9,7 +9,7 @@ from tqdm import tqdm
 from multiprocessing import Pool
 from time import time
 import requests
-from c.get_pretrained import filtered_vectors
+
 
 
 def get_emb(vec_file):
@@ -332,7 +332,7 @@ if __name__ == "__main__":
     f = open(os.path.join(args.dataset, args.out_file), 'w')
     f.close()
 
-    
+
     for topic in topic_emb:
         upper = 1.25
         lower = 1.0
@@ -353,10 +353,3 @@ if __name__ == "__main__":
     '''with open('Palmetto/topic_words.txt','w') as fout:
         for words in word_list:
             fout.write(' '.join(words)+'\n')'''
-
-
-
-
-
-
-

@@ -9,7 +9,7 @@ from tqdm import tqdm
 from multiprocessing import Pool
 from time import time
 import requests
-from c.get_pretrained import filtered_vectors
+
 
 
 def get_emb(vec_file):
@@ -353,8 +353,3 @@ if __name__ == "__main__":
 
     bashCommand="java -cp Palmetto/palmetto/target/Palmetto-jar-with-dependencies.jar org.aksw.palmetto.Palmetto Palmetto/wikipedia_bd C_V Palmetto/topic_words.txt"
     os.system(bashCommand)'''
-
-
-
-
-
