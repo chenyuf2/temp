@@ -1,0 +1,65 @@
+{
+    "ROOT": {
+        "information_processing": {
+            "information_processing-other": [],
+            "data_mining": {
+                "data_mining-other": [],
+                "text_mining": ["text_mining", "opinion_mining", "information_retrieval", "biomedical_literature", "text_processing", "text_documents", "text_data", "document_representations", "document_analysis", "document_clustering", "document_collection", "keyword_extraction", "keyphrase_extraction", "text_segments", "topic_extraction", "topic_modeling", "topic_models", "latent_dirichlet_allocation", "lda", "plsa", "language_modeling", "latent_semantic_indexing"],
+                "heterogeneous_information_networks": ["heterogeneous_information_networks", "graph_mining", "information_network", "information_cascade", "information_diffusion", "information_dissemination", "citation_prediction", "hins", "hin", "meta-path_selection", "meta-path_based", "heterogeneous_networks", "metapaths", "rankclass", "path-based", "linkbased", "meta-paths", "path_selection", "rankclus", "pathpredict", "pathsim", "netclus", "metapathbased"],
+                "truth_discovery": ["truth_discovery", "heterogeneous_data", "multiple_sources", "reliability_estimation", "truthfinder", "trustworthy", "untrustworthy", "faitcrowd", "factfinders", "fact_extraction", "majority_voting", "gtm"],
+                "pattern_mining": ["pattern_mining", "discovering_patterns", "pattern_discovery", "partial_periodic_patterns", "periodic_patterns", "mining_sequential_patterns", "frequent_itemset", "frequent_pattern_mining", "sequential_patterns", "sequential_pattern_mining", "frequent_patterns", "periodic_pattern"],
+                "recommender_systems": ["recommender_systems", "recommender_system", "recommendation_systems", "recsys", "personalized_recommendation", "friend_recommendation", "recommending", "recommendations", "recommenders", "recommendation", "recommender", "collaborative_filtering", "social_recommendations", "recommendation_quality"],
+                "anomaly_detection": ["anomaly_detection", "outlier_detection", "fraud_detection", "anomalies", "outlier", "outliers", "detecting_anomalies", "anomaly_score", "detect_anomalies", "ctoutliers"]
+            },
+            "machine_learning": {
+                "machine_learning-other": [],
+                "deep_learning": ["deep_learning", "neural_networks", "feature_representations", "deep_architectures", "lstms", "convnet", "fcn", "cnns", "dnns", "convolutional_networks", "autoencoder"],
+                "unsupervised_learning": ["unsupervised_learning", "clustering", "coclustering", "hierarchical_clustering", "soft_clustering", "subspace_clustering", "spectral_clustering", "ensemble_clustering", "consensus_clustering", "hierarchical_clustering_algorithms", "cluster_centroids", "kmeans", "densitybased", "kmeans_clustering", "cluster_detection"],
+                "supervised_learning": ["supervised_learning", "active_learning", "classification", "distant_supervision", "distantlysupervised", "semisupervised", "kernel_methods", "support_vector_machine", "support_vector_machines", "support_vector", "svm", "ranking_svm", "sequence_labeling"],
+                "transfer_learning": ["transfer_learning", "transferring_knowledge", "knowledge_transfer", "domain_adaptation", "multi-task_learning", "distance_functions", "functional_relationships", "feature_transformation", "cross-category"],
+                "graphical_model": ["graphical_model", "belief_propagation", "bayesian_network", "graphical_model", "hidden_variable", "generative_model", "multinomial_distribution", "latent_variables", "latent_variable", "estep", "probabilistic_model", "markov_chain", "bayesian_inference", "mstep", "expectation_maximization"]
+            },
+            "natural_language_processing": {
+                "natural_language_processing-other": [],
+                "information_extraction": ["information_extraction", "event_detection", "question_answering", "answer_extraction", "knowledge_acquisition", "entity_extraction", "entity_recognition", "entity_mentions", "relation_extraction", "attribute_extraction", "entity_linking", "fact_extraction", "named_entity_recognition", "entity_disambiguation"],
+                "sentiment_analysis": ["sentiment_analysis", "sentiment_polarity", "sentiment_lexicons", "polarities", "sentiments", "opinions_expressed", "opinion_mining", "aspectbased", "opinionated", "general_semantics"],
+                "text_summarization": ["text_summarization", "automatic_text_summarization", "automatic_summarization", "multidocument_summarization", "text_summarization", "extractive_summarization", "sentence_selection", "document_summarization", "single_document_summarization", "summarization"],
+                "parsing": ["parsing", "syntactic_parsing", "dependency_parsing", "semantic_role_labeling", "srl", "slot_filling", "coreference_resolution", "shallow_parser", "semantic_analysis", "pos_tagger", "partofspeech", "pos_tags", "parse_trees", "syntactic_structure"]
+            }
+        },
+        "communication_networks": {
+            "network_types": {
+                "network_types-other":[],
+                "sensor_networks": ["sensor_networks", "sensor_network", "wireless_sensor_networks", "wireless_sensor_network", "distributed_sensor_networks", "wsns", "wsn"],
+                "wireless_networks": ["wireless_networks", "multiuser_wireless", "wireless_network", "wireless_sensor_networks", "wireless_sensor_network", "cognitive_radio_networkss", "wireless_mesh_networks", "wsns", "wsn", "multihop_wireless_networks", "wireless_ad_hoc_networks", "wireless_communications", "wireless_adhoc_networks"],
+                "disruption/delay_tolerant_networks": ["disruption_tolerant_network", "delay_tolerant_networks", "delay_tolerant_network", "dtns", "dtn", "dtn_routing", "disruption_tolerant_networks", "delaytolerant", "disruptiontolerant", "delay_tolerant"],
+                "distributed_systems": ["distributed_systems", "distributed_computing", "cluster_computing", "grid_computing", "cloud_computing", "compute_nodes", "distributed_processing", "parallel_programming"],
+                "mobile_networks": ["mobile_networks", "mobile_network", "opportunistic_mobile_networks", "mobile_communication_network", "mobile_communication_networks", "manets", "mobile_ad_hoc_network", "mwsn", "mobile_social_networks", "msns", "vehicular_adhoc_networks", "mobile_ad_hoc_networks", "vehicleassisted", "vehicular_ad_hoc_networks", "mcnett"],
+                "composite/complex_network": ["complex_network", "complex_networks", "complex_systems", "complex_system", "composite_networks", "composite_network_model", "composite_network", "composite_network_analysis"]
+            },
+            "network_algorithm": {
+                "network_algorithm-other": [],
+                "scheduling": ["scheduling", "opportunistic_scheduling", "transmission_scheduling", "scheduling_algorithms", "scheduling_problems", "scheduling_algorithm", "optimal_scheduling", "scheduling_problem", "scheduling_policies", "dynamic_scheduling", "task_scheduling"],
+                "routing": ["routing", "secure_routing", "source_routing", "routing_protocol", "routing_protocols", "based_routing", "dynamic_routing", "resilient_routing", "backpressure_routing", "opportunistic_routing", "multicast_routing", "packet_routing", "routing_scheme", "efficient_routing", "adaptive_routing", "epidemic_routing"]
+            },
+            "network_performance": {
+                "quality_of_information": ["quality_of_information", "quality_of_information", "qoi", "qualityofinformation", "deliveredqoi", "qoivector", "qoiaware", "qoibased", "quality-of-information", "qoioutage", "quality_of_services", "quality_of_service"]
+            }
+        },
+        "social_computing": {
+            "social_computing-other": [],
+            "social_network": {
+                "social_network-other": [],
+                "community_detection": ["community_detection", "community_structure", "community_detection_algorithms", "social_communities", "overlapping_communities", "parallel_community_detection", "discovering_communities", "intercommunity", "potts_model"],
+                "link_analysis": ["link_prediction", "link_analysis", "linkoriented", "social_ties", "link_structure", "social_connections"],
+                "multiagent_systems": ["multiagent_systems", "autonomous_agents", "multiagents", "multiteam_systems", "multi-team_systems", "multiteam", "team_effectiveness", "team_performance"],
+                "social_media": ["social_media", "news_media", "social_consensus", "microblog", "twitter", "instagram", "reddit", "facebook", "microblogs", "tweets", "headlines", "newsworthy", "reddit", "hashtags", "online_news", "online_media", "forum_posts", "newsgathering", "user_generated", "photosharing"]
+            },
+            "human_behavior": {
+                "human_behavior-other": [],
+                "crowdsourcing": ["crowdsourcing", "crowdsourced", "crowdsensing", "crowdfunding", "participatory_sensing", "amazon_mechanical_turk", "crowdcuration", "location_based_services", "dynamic_pricing", "participatory_sensing"],
+                "trust_management": ["trust", "argumentation-based", "trust_assessment", "trust_modeling", "trust_formation", "trust_management", "trust_inference", "trust_propagation", "trust_evaluation", "trustor", "trustee", "trustors", "trustees"],
+                "online_game": ["online_game", "massive_multiplayer_online", "role_playing_games", "mmogs", "mmog", "mmos", "gold_farming", "online_gamers", "game_developer", "online_games", "shooter_games", "massively_multiplayer_online_games", "virtual_world", "strategy_game", "role_playing_game", "naming_game", "game_studies", "player_characters"]
+            }}
+    }
+}

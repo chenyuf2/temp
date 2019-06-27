@@ -1,0 +1,399 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>KDD DEMO</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'nav/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'nav/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="{% static 'nav/css/agency.min.css' %}" rel="stylesheet">
+
+     <link href="{% static 'tablestatic/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+      <link href="{% static 'tablestatic/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+ <link href="{% static 'tablestatic/modal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+</head>
+<style>
+.icons-container{
+    height: 100px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+.social-icons .item {
+    display: inline-block;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    transition: .3s all;
+    position: relative;
+    -webkit-transition: .3s all;
+    text-align: center;
+    color: #fff;
+    background-color: #fff;
+    line-height: 48px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    box-shadow: 0px 5px 11px 0px rgba(0,0,0,0.18), 0px 4px 15px 0px rgba(0,0,0,0.15);
+}
+.social-icons.spinned .item:hover {
+    -webkit-animation: Social-Icons-Flipping .3s;
+    animation: Social-Icons-Flipping .3s
+}
+.social-icons .item:hover {
+    text-decoration: none;
+    background-color: #42474E;
+    box-shadow: 0 -1px 0 transparent inset, 0 2px 3px rgba(0, 0, 0, .1), 0 4px 8px rgba(0, 0, 0, .3);
+    color: #fff!important
+}
+.social-icons .item .fa {
+    font-size: 15px;
+    font-weight: 500;
+}
+.social-icons .facebook {
+    color: #425F9C!important
+}
+.social-icons .twitter {
+    color: #00ACEE!important
+}
+.social-icons .google {
+    color: #c00!important
+}
+.social-icons .linkedin {
+    color: #0073B2!important
+}
+.social-icons .youtube {
+    color: #EB3E40!important
+}
+.social-icons .instagram {
+    color: #5E8AAC!important
+}
+.facebook:hover {
+    background-color: #425F9C!important
+}
+.twitter:hover {
+    background-color: #00ACEE!important
+}
+.google:hover {
+    background-color: #c00!important
+}
+.linkedin:hover {
+    background-color: #0073B2!important
+}
+.youtube:hover {
+    background-color: #EB3E40!important
+}
+.instagram:hover {
+    background-color: #5E8AAC!important
+}
+@-webkit-keyframes Social-Icons-Flipping {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+@keyframes Social-Icons-Flipping {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+#dataTable {
+  font-family: "Montserrat";
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataTable td, #dataTable th {
+  border: 1px
+  padding: 8px;
+  font-size: 23px;
+}
+
+#dataTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#dataTable tr:hover {background-color: #ddd;}
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:  black;
+  text-transform: uppercase;
+  color: white;
+}
+
+
+#dataAgain {
+  font-family: "Montserrat";
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataAgain td, #dataAgain th {
+  border: 1px;
+  padding: 8px;
+  font-size: 23px;
+}
+
+#dataAgain tr:nth-child(even){background-color: #f2f2f2;}
+
+#dataAgain tr:hover {background-color: #ddd;}
+
+#dataAgain th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:  black;
+    text-transform: uppercase;
+  color: white;
+}
+
+form div {
+  background: rgba(0,0,0,0);
+  padding: 40px;
+}
+form input {
+  height: 40px;
+  padding:10px;
+  border: none;
+  border-radius:25px;
+  outline:none;
+  line-height: 38px;
+
+}
+
+
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container" style="float:left; vertical-align:middle;" id="align1">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="page-scroll">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button> -->
+                <!-- <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+
+                </form> -->
+
+                <a class="navbar-brand page-scroll" style="outline:0!important;"href="/">TOPICMINE</a>
+
+             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form method="post" style="" id="align2">
+                  {% csrf_token %}
+                  {{ form }}
+              </form>
+              <script>
+              var align1= document.getElementById("align1");
+              var align2 = document.getElementById("align2");
+              var height1 = align1.offsetHeight;
+              var height2 = align2.offsetHeight;
+              align2.style.marginTop = ((height1-40)/2).toString() + "px";
+            </script>
+                <!-- <a class="navbar-brand page-scroll" style="outline:0!important; font-size:12px;"href="/">TOPICMINE</a> -->
+                 <ul class="nav navbar-nav">
+
+
+
+                    <li>
+                        <!-- <a class="page-scroll" href="#services">Services</a> -->
+                            <!-- <a class="navbar-brand page-scroll" style="outline:0!important;"href="/">TOPICMINE</a> -->
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header >
+        <div class="container">
+            <div class="intro-text" >
+                <div class="intro-lead-in"></div>
+                <div class="intro-heading">Welcome to KDD Demo!</div>
+                <a href="#services" style="background:#BD5D38; border:none;" class="page-scroll btn btn-xl">Let's Explore</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category Representative Phrases</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+            <div class="text-center col-lg-12">
+              <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead id="keyword_title">
+
+                          </thead>
+
+                          <tbody id = "keyword_table">
+
+                          </tbody>
+                        </table>
+                      </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container col-lg-12" style="margin-top:4em;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category Phrases Sort By Specificity Range</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+  <div class="text-center col-lg-12">
+                     <div class="table-responsive">
+               <table class="table table-bordered" id="dataAgain" width="100%" cellspacing="0">
+                 <thead id="datatable_title">
+
+                 </thead>
+
+                 <tbody id="datatable_body">
+
+                 </tbody>
+               </table>
+             </div>
+
+
+
+
+
+           </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="container" style="margin:0 auto;">
+
+
+
+                  <div class="social-icons spinned mb-5">
+                       <a class="item facebook" href="https://www.facebook.com/"><em class="fa fa-facebook"></em></a>
+                       <a class="item twitter" href="https://twitter.com/"><em class="fa fa-twitter"></em></a>
+                       <a class="item google" href="https://www.google.com/"><em class="fa fa-google"></em></a>
+                       <a class="item instagram" href="https://www.instagram.com/"><em class="fa fa-instagram"></em></a>
+                   </div>
+<p class="text-muted" style="margin-top:2em;">Copyright &copy; 2019 Han's Group. All rights reserved.</p>
+
+
+        </div>
+    </footer>
+
+
+
+    <!-- jQuery -->
+    <script src="{% static 'nav/vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'nav/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'nav/js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'nav/js/contact_me.js' %}"></script>
+
+    <script src="https://use.fontawesome.com/1179e95335.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'nav/js/agency.min.js' %}"></script>
+     <script src="{% static 'js/table.js' %}"></script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
