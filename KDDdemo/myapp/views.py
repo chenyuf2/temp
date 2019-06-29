@@ -14,11 +14,11 @@ def index(request):
             for i in range(0,len(name)):
                 temp = name[i].strip()
                 new_string = ""
-                for i in range(0,len(temp)):
-                    if (temp[i]==" "):
+                for j in range(0,len(temp)):
+                    if (temp[j]==" "):
                         new_string += "_"
                     else:
-                        new_string += temp[i]
+                        new_string += temp[j]
                 file1.write(new_string + '\n')
             file1.close()
             # output=subprocess.check_output(['bash', 'run.sh'],cwd="KDDdemo/static/src/c") ##This is the output after calling bash
@@ -42,8 +42,13 @@ def contact(request):
             name = input.split(",")
             for i in range(0,len(name)):
                 temp = name[i].strip()
-                temp.replace(" ", "_")
-                file1.write(temp + '\n')
+                new_string= ""
+                for j in range(0,len(temp)):
+                    if (temp[j] == " "):
+                        new_string += "_"
+                    else:
+                        new_string += temp[j]
+                file1.write(new_string + '\n')
             file1.close()
             # output=subprocess.check_output(['bash', 'run.sh'],cwd="KDDdemo/static/src/c") ##This is the output after calling bash
             # output = str(output, 'utf-8','ignore') ## Before this line, the output is in byte format. We change it to the string so that we can modify it later
