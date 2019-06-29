@@ -1,3 +1,2 @@
-physics
-computer_science
-electrical_engineering
+machine_learning
+data_mining
