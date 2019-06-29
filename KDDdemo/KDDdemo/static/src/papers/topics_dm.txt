@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 ashdkjasfksdjfd
+=======
+machine_learning
+data_mining
+>>>>>>> 362da3e823371a868c6621364f8423a01237324a
