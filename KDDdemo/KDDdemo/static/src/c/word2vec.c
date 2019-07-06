@@ -20,6 +20,7 @@
 #include <time.h>
 #include <unistd.h>
 
+
 #define MAX_STRING 100
 #define EXP_TABLE_SIZE 1000
 #define MAX_EXP 6
@@ -40,7 +41,7 @@ struct vocab_word {
     char *word, *code, codelen;
 };
 
-char train_file[MAX_STRING], output_file[MAX_STRING], kappa_file[MAX_STRING], topic_file[MAX_STRING];
+char train_file[MAX_STRING], output_file[MAX_STRING], output_tmp_file[MAX_STRING], kappa_file[MAX_STRING], topic_file[MAX_STRING];
 char topic_output[MAX_STRING];
 char context_output[MAX_STRING];
 char load_emb_file[MAX_STRING];
@@ -893,6 +894,9 @@ void TrainModel() {
   if (context_output[0] != 0) {
     printf("Output to: %s\n", context_output);
   }
+  if (output_tmp_file[0] != 0) {
+    printf("output_tmp_file: %s\n", output_tmp_file);
+  }
 
   starting_alpha = alpha;
   if (read_vocab_file[0] != 0) ReadVocab(); else LearnVocabFromTrainFile();
@@ -997,13 +1001,17 @@ void TrainModel() {
           }
         }
       }
+      FILE* fmid = fopen(output_tmp_file, "a");
       for (a = 0; a < topics; a++) {
         printf("Cluster: %ld\n", a);
         for (b = 0; b < num_per_topic; b++) {
+          fprintf(fmid, "%s ", vocab[fix_seed_rankings[a * vocab_size + b] % vocab_size].word);
           printf("%s ", vocab[fix_seed_rankings[a * vocab_size + b] % vocab_size].word);
         }
         printf("\n");
+        fprintf(fmid, "\n");
       }
+      fclose(fmid);
       for (a = 0; a < num_threads; a++) pthread_create(&pt[a], NULL, TrainModelThread, (void *) a);
       for (a = 0; a < num_threads; a++) pthread_join(pt[a], NULL);
     }
@@ -1171,6 +1179,7 @@ int main(int argc, char **argv) {
     return 0;
   }
   output_file[0] = 0;
+  output_tmp_file[0] = 0;
   save_vocab_file[0] = 0;
   read_vocab_file[0] = 0;
   if ((i = ArgPos((char *) "-size", argc, argv)) > 0) layer1_size = atoi(argv[i + 1]);
@@ -1180,7 +1189,29 @@ int main(int argc, char **argv) {
   if ((i = ArgPos((char *) "-debug", argc, argv)) > 0) debug_mode = atoi(argv[i + 1]);
   if ((i = ArgPos((char *) "-binary", argc, argv)) > 0) binary = atoi(argv[i + 1]);
   if ((i = ArgPos((char *) "-alpha", argc, argv)) > 0) alpha = atof(argv[i + 1]);
-  if ((i = ArgPos((char *) "-output", argc, argv)) > 0) strcpy(output_file, argv[i + 1]);
+  if ((i = ArgPos((char *) "-output", argc, argv)) > 0) {
+    strcpy(output_file, argv[i + 1]);
+    strcpy(output_tmp_file, argv[i + 1]);
+    int filename_length = 0;
+    for (int j=0; ;j++) {
+      if(output_file[j] == 0) {
+        filename_length = j;
+        break;
+      }
+    }
+    for (int j=filename_length; j>=0 ;j--) {
+      if (output_file[j] != '.') {
+        output_tmp_file[j+4] = output_file[j];
+      } else {
+        output_tmp_file[j+4] = output_file[j];
+        output_tmp_file[j+3] = 'p';
+        output_tmp_file[j+2] = 'm';
+        output_tmp_file[j+1] = 't';
+        output_tmp_file[j] = '_';
+        break;
+      }
+    }
+  }
 
   if ((i = ArgPos((char *) "-global_lambda", argc, argv)) > 0) global_lambda = atof(argv[i + 1]);
   if ((i = ArgPos((char *) "-reg_lambda", argc, argv)) > 0) reg_lambda = atof(argv[i + 1]);

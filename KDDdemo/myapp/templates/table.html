@@ -21,14 +21,14 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Theme CSS -->
     <link href="{% static 'nav/css/agency.min.css' %}" rel="stylesheet">
 
      <link href="{% static 'tablestatic/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
       <link href="{% static 'tablestatic/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
  <link href="{% static 'tablestatic/modal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-
+ <script src="{% static 'js/table.js' %}"></script>
 
 
 
@@ -303,14 +303,128 @@ form input {
   }
 }
 
+
+
+
+.loader {
+  width: 1px;
+  height: 1px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  -webkit-animation: bubble-burst .75s infinite;
+          animation: bubble-burst .75s infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+}
+
+.loader-label {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+.loader-label span {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+@-webkit-keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    background: #5470B0;
+  }
+}
+.add-box {
+  float: left;
+  width: 400px;
+  height: 100px;
+  background: #BDFCED;
+  color: #00DECF;
+  font-size: 50px;
+  vertical-align: middle;
+  border: 0;
+  cursor: pointer;
+}
+.add-box:focus {
+  outline: 0;
+}
+
+.box {
+  float: left;
+  background:  red;
+  width: 400px;
+  height: 100px;
+  line-height: 100px;
+  animation: expand .5s ease-in-out;
+  text-align: center;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.box span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
 </style>
 {% if messages %}
 {% for message in messages %}
-<body id="page-top" class="index" onload="tempclick()" style="overflow-y:hidden;">
+<body id="page-top" class="index" onload="tempclick() setdefault()" style="overflow-y:hidden;">
 
 {% endfor %}
 {% else %}
-<body id="page-top" class="index" onload="defaultfunc()">
+<body id="page-top" class="index" onload="defaultfunc() setdefault()">
 {% endif %}
 <script>
 function defaultfunc() {
@@ -381,7 +495,7 @@ function defaultfunc() {
     </nav>
 
     <!-- Header -->
-    <header >
+    <header id="section1" >
         <div class="container">
             <div class="intro-text" >
                 <div class="intro-lead-in"></div>
@@ -390,13 +504,21 @@ function defaultfunc() {
             </div>
         </div>
     </header>
-    <div class="box" style="visibility:hidden;">
+    <div class="box" style="visibility:hidden;" id="section2">
     <a class="button" id="interesting" href="#popup1">Let me Pop up</a>
     </div>
     <script>
     function tempclick() {
     document.getElementById("interesting").click();
-    }</script>
+    }
+//     function read(){
+//     jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){console.log(data);});
+// }
+//     window.onload = function () {
+//              //Make sure the function fires as soon as the page is loaded
+//             setInterval(read, 1000); //Then set it to run again after ten minutes
+//         }
+  </script>
     {% if messages %}
     {% for message in messages %}
 
@@ -490,13 +612,72 @@ function defaultfunc() {
     <!-- About Section -->
 
 
+    <div style="width:100%; display:none;" id="loader1">
+    <div class="loader"></div>
+    <div class="loader-label"><span>loading...</span><br>0%</div>
+  </div>
+  <div id="loader2"></div>
+  <!-- <div class="box" style="text-align:center;"><span>I like you</span></div> -->
+  <!-- <button class="add-box" style="top:50%;">+</button> -->
+  <div style="display:none;" id="useful">1</div>
+
+  <script>
+  function setdefault() {
+    var useful = document.getElementById("useful");
+    useful.innerHTML = "1";
+  }
+
+  // function sleep(milliseconds) {
+  //   var start = new Date().getTime();
+  //   for (var i = 0; i < 1e7; i++) {
+  //     if ((new Date().getTime() - start) > milliseconds){
+  //       break;
+  //     }
+  //   }
+  // }
+  // window.onload = function () {
+  //          //Make sure the function fires as soon as the page is loaded
+  //         setInterval(loadingtable, 200); //Then set it to run again after 0.1s
+  //
+  //     }
+  // function loadingtable() {
+  //   // console.log('successfully loading materials');
+  //     jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){
+  //         jQuery.get('static/js/loadingornot.txt',function(data2){
+  //             jQuery.get('static/src/papers/topics_dm.txt',function(data3){
+  //               var useful = document.getElementById("useful");
+  //               var old_num = parseInt(useful.innerHTML);
+  //               var user_input = data3;
+  //               var user_input_array = user_input.split("\n");
+  //               var num_of_input = user_input_array.length - 1;
+  //               var dynamic = data;
+  //               var dynamic_array = data.split("\n");
+  //               console.log(old_num);
+  //               if (old_num < dynamic_array) {
+  //                 for (var i = old_num-1; i < dynamic_array.length-1; i++) {
+  //                   var temp = dynamic_array[i];
+  //                   $('<div class="box" style="text-align:center;"><span>'+temp+'</span></div>').appendTo('body');
+  //                 }
+  //                 useful.innerHTML = dynamic_array.length.toString();
+  //               } else {
+  //                 return;
+  //               }
+  //
+  // });
+  // });
+  // });
+  // }
+  // $(function() {
+  //   $('.add-box').click(function() {
+  //     $('<div class="box" style="text-align:center;"><span>I like you</span></div>').appendTo('body');
+  //
+  //   })
+  // })
+  </script>
 
 
 
-
-
-
-    <footer>
+    <footer id="foots">
         <div class="container" style="margin:0 auto;">
 
 
@@ -533,7 +714,8 @@ function defaultfunc() {
     <!-- Theme JavaScript -->
     <script src="{% static 'nav/js/agency.min.js' %}"></script>
      <script src="{% static 'js/table.js' %}"></script>
-
+   <!-- <script src="{% static 'js/important.js' %}"></script> -->
+    <script src="{% static 'js/anotherimportant.js' %}"></script>
 
 
 

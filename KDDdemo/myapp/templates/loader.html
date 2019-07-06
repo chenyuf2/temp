@@ -1,0 +1,207 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>KDD DEMO</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link href="{% static 'css/loading.css' %}" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Theme CSS -->
+
+
+</head>
+<style>
+body {
+  background: gold;
+}
+
+.loader {
+  width: 1px;
+  height: 1px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  -webkit-animation: bubble-burst .75s infinite;
+          animation: bubble-burst .75s infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+}
+
+.loader-label {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+.loader-label span {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+@-webkit-keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    background: #5470B0;
+  }
+}
+.add-box {
+  float: left;
+  width: 400px;
+  height: 100px;
+  background: #BDFCED;
+  color: #00DECF;
+  font-size: 50px;
+  vertical-align: middle;
+  border: 0;
+  cursor: pointer;
+}
+.add-box:focus {
+  outline: 0;
+}
+
+.box {
+  float: left;
+  background:  red;
+  width: 400px;
+  height: 100px;
+  line-height: 100px;
+  animation: expand .5s ease-in-out;
+  text-align: center;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.box span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+</style>
+<body>
+  <div style="width:100%;">
+  <div class="loader"></div>
+  <div class="loader-label"><span>loading...</span><br>0%</div>
+</div>
+<!-- <button class="add-box" style="top:50%;">+</button> -->
+<div style="display:none;" id="useful">1</div>
+
+</body>
+<script>
+function setdefault() {
+  var useful = document.getElementById("useful");
+  useful.innerHTML = "1";
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+window.onload = function () {
+         //Make sure the function fires as soon as the page is loaded
+        setInterval(loadingtable, 200); //Then set it to run again after 0.1s
+
+    }
+function loadingtable() {
+  // console.log("why it doesn't work")
+  // console.log('successfully loading materials');
+    jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){
+        jQuery.get('static/js/loadingornot.txt',function(data2){
+            jQuery.get('static/src/papers/topics_dm.txt',function(data3){
+              var useful = document.getElementById("useful");
+              var old_num = parseInt(useful.innerHTML);
+              var user_input = data3;
+              var user_input_array = user_input.split("\n");
+              var num_of_input = user_input_array.length - 1;
+              var dynamic = data;
+              var dynamic_array = data.split("\n");
+              if (old_num < dynamic_array) {
+                for (var i = old_num-1; i < dynamic_array.length-1; i++) {
+                  var temp = dynamic_array[i];
+                  $('<div class="box" style="text-align:center;"><span>'+temp+'</span></div>').appendTo('body');
+                }
+                useful.innerHTML = dynamic_array.length.toString();
+              } else {
+                return;
+              }
+
+});
+});
+});
+}
+// $(function() {
+//   $('.add-box').click(function() {
+//     $('<div class="box" style="text-align:center;"><span>I like you</span></div>').appendTo('body');
+//
+//   })
+// })
+</script>
+</html>

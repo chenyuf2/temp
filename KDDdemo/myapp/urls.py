@@ -19,6 +19,7 @@ from myapp import views as v
 urlpatterns = [
     path('', v.index),
     re_path(r"^table*", v.contact),
+    re_path(r"^loader*", v.loader),
     # path('output', v.output, name="script"),
     # path('name', v.get_name, name="names")
 ]

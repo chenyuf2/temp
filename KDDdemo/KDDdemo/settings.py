@@ -31,7 +31,16 @@ SECRET_KEY = 'h(6(ue37+38%$yg2&gfdho*yd2r1353pxzqucb)am@j-mf(2x1'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.contrib.auth.context_processors.auth",
+# "django.core.context_processors.debug",
+# "django.core.context_processors.i18n",
+# "django.core.context_processors.media",
+# "django.core.context_processors.static",
+# "django.core.context_processors.tz",
+# "django.contrib.messages.context_processors.messages",
+# "django.core.context_processors.request",
+# )
 
 # Application definition
 
@@ -66,8 +75,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                 'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
             ],
         },
     },

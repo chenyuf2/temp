@@ -1,0 +1,6 @@
+physics 
+computer_science 
+electrical_engineering 
+physics theoretical_physics 
+computer_science university 
+electrical_engineering electrical 

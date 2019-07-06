@@ -22,6 +22,7 @@ function loadJSON2(callback) {
 }
 loadJSON(function(json) {
 loadJSON2(function(json2) {
+  console.log('succfully load');
 var table1 = json;
 var table2 = json2;
 //So far, table1 and table2 are stored in string. We need convert them to be dictionary the following steps did this.
