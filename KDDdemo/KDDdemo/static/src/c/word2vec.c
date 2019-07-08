@@ -942,6 +942,11 @@ void TrainModel() {
       }
     printf("Training with regularization begins\n");
     is_pretrain = 0;
+    FILE* fmid = fopen(output_tmp_file, "w");
+    fclose(fmid);
+    FILE* fl = fopen("../../js/loadingornot.txt", "w");
+    fprintf(fl,"true");
+    fclose(fl);
     for (iter_count = pretrain_iters; iter_count < iter; iter_count++) {
       num_per_topic = (iter_count - pretrain_iters) * expand + initial_seed_set_size;
       similaritySearchSize = num_per_topic * 5;
@@ -1001,7 +1006,7 @@ void TrainModel() {
           }
         }
       }
-      FILE* fmid = fopen(output_tmp_file, "a");
+      fmid = fopen(output_tmp_file, "a");
       for (a = 0; a < topics; a++) {
         printf("Cluster: %ld\n", a);
         for (b = 0; b < num_per_topic; b++) {
@@ -1015,6 +1020,11 @@ void TrainModel() {
       for (a = 0; a < num_threads; a++) pthread_create(&pt[a], NULL, TrainModelThread, (void *) a);
       for (a = 0; a < num_threads; a++) pthread_join(pt[a], NULL);
     }
+    fmid = fopen(output_tmp_file, "w");
+    fclose(fmid);
+    fl = fopen("../../js/loadingornot.txt", "w");
+    fprintf(fl,"false");
+    fclose(fl);
   }
   fo = fopen(output_file, "wb");
   if (classes == 0) {

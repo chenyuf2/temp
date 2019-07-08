@@ -5,19 +5,22 @@ function sleep(ms) {
 
 window.onload = function () {
          //Make sure the function fires as soon as the page is loaded
-        setInterval(importantjs, 4000); //Then set it to run again after 0.1s
+        setInterval(importantjs, 3500); //Then set it to run again after 0.1s
 
     }
 function importantjs() {
   // console.log("why it doesn't work")
   // console.log('successfully loading materials');
+  jQuery.get('static/src/papers/topics_dm.txt',function(data3){
     jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){
         jQuery.get('static/js/loadingornot.txt',function(data2){
-                  jQuery.get('static/src/papers/topics_dm.txt',function(data3){
+                  
 
   var table3 = data;
   var test = data2;
-  console.log(document.getElementById("useful").innerHTML);
+  // console.log(document.getElementById("useful").innerHTML);
+  console.log(data2);
+  console.log(data);
   //table3_array stores the dynamic values
   // test stores if the program begins to run
   var table3_array = table3.split("\n");
