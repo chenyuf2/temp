@@ -316,6 +316,7 @@ form input {
   position: absolute;
   top: 10%;
   left: 50%;
+  z-index: 5;
 }
 
 .loader-label {
@@ -328,10 +329,12 @@ form input {
   color: black;
   text-align: center;
   font-weight: bold;
+  z-index: 5;
 }
 .loader-label span {
   font-size: 12px;
   letter-spacing: 1px;
+  z-index: 5;
 }
 
 @-webkit-keyframes bubble-burst {
@@ -379,7 +382,7 @@ form input {
   from {
     transform: scale(0);
     opacity: 0;
-    background: #5470B0;
+    background: white;
   }
 }
 .add-box {
@@ -398,17 +401,9 @@ form input {
 }
 
 .box {
-  float: left;
-  background:  red;
-  width: 400px;
-  height: 100px;
-  line-height: 100px;
+
   animation: expand .5s ease-in-out;
-  text-align: center;
-  border-radius: 25px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
+
 }
 
 .box span {
@@ -417,14 +412,29 @@ form input {
   line-height: normal;
 }
 
+
+div.horizontally {
+    width: 100%;
+    overflow: auto;
+}
+
+.tabletable {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+
+
 </style>
 {% if messages %}
 {% for message in messages %}
-<body id="page-top" class="index" onload="tempclick() setdefault()" style="overflow-y:hidden;">
+
+<body id="page-top" class="index" onload="tempclick() setdefault() importantjs()" style="overflow-y:hidden;">
 
 {% endfor %}
 {% else %}
-<body id="page-top" class="index" onload="defaultfunc() setdefault()">
+<body id="page-top" class="index" onload="defaultfunc() setdefault() importantjs()">
 {% endif %}
 <script>
 function defaultfunc() {
@@ -580,7 +590,7 @@ function defaultfunc() {
     </section>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section id="portfolio2">
         <div class="container col-lg-12" style="margin-top:4em;">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -614,7 +624,7 @@ function defaultfunc() {
 
     <div style="width:100%; display:none;" id="loader1">
     <div class="loader"></div>
-    <div class="loader-label"><span>loading...</span><br>0%</div>
+    <div class="loader-label"><span>loading...</span><br><div id="loadingnum">0%</div></div>
   </div>
   <div id="loader2"></div>
   <!-- <div class="box" style="text-align:center;"><span>I like you</span></div> -->
@@ -627,55 +637,67 @@ function defaultfunc() {
     useful.innerHTML = "1";
   }
 
-  // function sleep(milliseconds) {
-  //   var start = new Date().getTime();
-  //   for (var i = 0; i < 1e7; i++) {
-  //     if ((new Date().getTime() - start) > milliseconds){
-  //       break;
-  //     }
-  //   }
-  // }
-  // window.onload = function () {
-  //          //Make sure the function fires as soon as the page is loaded
-  //         setInterval(loadingtable, 200); //Then set it to run again after 0.1s
-  //
-  //     }
-  // function loadingtable() {
-  //   // console.log('successfully loading materials');
-  //     jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){
-  //         jQuery.get('static/js/loadingornot.txt',function(data2){
-  //             jQuery.get('static/src/papers/topics_dm.txt',function(data3){
-  //               var useful = document.getElementById("useful");
-  //               var old_num = parseInt(useful.innerHTML);
-  //               var user_input = data3;
-  //               var user_input_array = user_input.split("\n");
-  //               var num_of_input = user_input_array.length - 1;
-  //               var dynamic = data;
-  //               var dynamic_array = data.split("\n");
-  //               console.log(old_num);
-  //               if (old_num < dynamic_array) {
-  //                 for (var i = old_num-1; i < dynamic_array.length-1; i++) {
-  //                   var temp = dynamic_array[i];
-  //                   $('<div class="box" style="text-align:center;"><span>'+temp+'</span></div>').appendTo('body');
-  //                 }
-  //                 useful.innerHTML = dynamic_array.length.toString();
-  //               } else {
-  //                 return;
-  //               }
-  //
-  // });
-  // });
-  // });
-  // }
-  // $(function() {
-  //   $('.add-box').click(function() {
-  //     $('<div class="box" style="text-align:center;"><span>I like you</span></div>').appendTo('body');
-  //
-  //   })
-  // })
+
+
   </script>
 
+  <section id="portfolio" style="height:100%; background-color:#DCC7AA; display:none;" >
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Loading</h2>
+            <h3 class="section-subheading text-muted">This may take a while to load...</h3>
+        </div>
+    </div><!--
+    --><div style="overflow-x:auto;" >
+        <div class="row" style="margin:0 auto!important; width: 1500px;overflow-x:auto;" id="rowlength">
 
+               <!-- <div class="portfolio-item" style="width: 500px!important; display:inline-block;  margin-right:-4px; ">
+
+                   <div class=" portfolio-caption box" style="border-radius:20px;">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class=" portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+             <br>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important;display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:table-cell;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div> -->
+</div>
+</div>
+   </section>
 
     <footer id="foots">
         <div class="container" style="margin:0 auto;">

@@ -4,32 +4,307 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>KDD DEMO</title>
+    <title>KDD DEMO</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'nav/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
+    <!-- Custom Fonts -->
+    <link href="{% static 'nav/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="{% static 'nav/css/agency.min.css' %}" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Custom CSS -->
-  <link href="{% static 'css/loading.css' %}" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Theme CSS -->
+     <link href="{% static 'tablestatic/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+      <link href="{% static 'tablestatic/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+ <link href="{% static 'tablestatic/modal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+ <script src="{% static 'js/table.js' %}"></script>
 
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
 
 </head>
 <style>
-body {
-  background: gold;
+.icons-container{
+    height: 100px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
 }
+.social-icons .item {
+    display: inline-block;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    transition: .3s all;
+    position: relative;
+    -webkit-transition: .3s all;
+    text-align: center;
+    color: #fff;
+    background-color: #fff;
+    line-height: 48px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    box-shadow: 0px 5px 11px 0px rgba(0,0,0,0.18), 0px 4px 15px 0px rgba(0,0,0,0.15);
+}
+.social-icons.spinned .item:hover {
+    -webkit-animation: Social-Icons-Flipping .3s;
+    animation: Social-Icons-Flipping .3s
+}
+.social-icons .item:hover {
+    text-decoration: none;
+    background-color: #42474E;
+    box-shadow: 0 -1px 0 transparent inset, 0 2px 3px rgba(0, 0, 0, .1), 0 4px 8px rgba(0, 0, 0, .3);
+    color: #fff!important
+}
+.social-icons .item .fa {
+    font-size: 15px;
+    font-weight: 500;
+}
+.social-icons .facebook {
+    color: #425F9C!important
+}
+.social-icons .twitter {
+    color: #00ACEE!important
+}
+.social-icons .google {
+    color: #c00!important
+}
+.social-icons .linkedin {
+    color: #0073B2!important
+}
+.social-icons .youtube {
+    color: #EB3E40!important
+}
+.social-icons .instagram {
+    color: #5E8AAC!important
+}
+.facebook:hover {
+    background-color: #425F9C!important
+}
+.twitter:hover {
+    background-color: #00ACEE!important
+}
+.google:hover {
+    background-color: #c00!important
+}
+.linkedin:hover {
+    background-color: #0073B2!important
+}
+.youtube:hover {
+    background-color: #EB3E40!important
+}
+.instagram:hover {
+    background-color: #5E8AAC!important
+}
+@-webkit-keyframes Social-Icons-Flipping {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+@keyframes Social-Icons-Flipping {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+#dataTable {
+  font-family: "Montserrat";
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataTable td, #dataTable th {
+  border: 1px
+  padding: 8px;
+  font-size: 23px;
+}
+
+#dataTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#dataTable tr:hover {background-color: #ddd;}
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:  black;
+  text-transform: uppercase;
+  color: white;
+}
+
+
+#dataAgain {
+  font-family: "Montserrat";
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataAgain td, #dataAgain th {
+  border: 1px;
+  padding: 8px;
+  font-size: 23px;
+}
+
+#dataAgain tr:nth-child(even){background-color: #f2f2f2;}
+
+#dataAgain tr:hover {background-color: #ddd;}
+
+#dataAgain th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:  black;
+    text-transform: uppercase;
+  color: white;
+}
+
+form div {
+  background: rgba(0,0,0,0);
+  padding: 40px;
+}
+form input {
+  height: 40px;
+  padding:10px;
+  border: none;
+  border-radius:25px;
+  outline:none;
+  line-height: 38px;
+
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.button:hover {
+  background: #06D85F;
+}
+
+.overlayy {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+
+}
+.overlayy:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popupp {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 25px;
+  width: 50%;
+  position: relative;
+  background-color: #d9534f;
+  text-align: center;;
+  /* transition: all 5s ease-in; */
+}
+
+.popupp h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: 'Montserrat';
+}
+.popupp .close {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.popupp .close:hover {
+  color: white;
+}
+.popupp .content {
+  max-height: 30%;
+  overflow: auto;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popupp{
+    width: 70%;
+  }
+}
+
+
+
 
 .loader {
   width: 1px;
@@ -41,6 +316,7 @@ body {
   position: absolute;
   top: 10%;
   left: 50%;
+  z-index: 5;
 }
 
 .loader-label {
@@ -53,10 +329,12 @@ body {
   color: black;
   text-align: center;
   font-weight: bold;
+  z-index: 5;
 }
 .loader-label span {
   font-size: 12px;
   letter-spacing: 1px;
+  z-index: 5;
 }
 
 @-webkit-keyframes bubble-burst {
@@ -104,7 +382,7 @@ body {
   from {
     transform: scale(0);
     opacity: 0;
-    background: #5470B0;
+    background: white;
   }
 }
 .add-box {
@@ -123,17 +401,9 @@ body {
 }
 
 .box {
-  float: left;
-  background:  red;
-  width: 400px;
-  height: 100px;
-  line-height: 100px;
+
   animation: expand .5s ease-in-out;
-  text-align: center;
-  border-radius: 25px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
+
 }
 
 .box span {
@@ -141,67 +411,346 @@ body {
   vertical-align: middle;
   line-height: normal;
 }
-</style>
-<body>
-  <div style="width:100%;">
-  <div class="loader"></div>
-  <div class="loader-label"><span>loading...</span><br>0%</div>
-</div>
-<!-- <button class="add-box" style="top:50%;">+</button> -->
-<div style="display:none;" id="useful">1</div>
 
-</body>
-<script>
-function setdefault() {
-  var useful = document.getElementById("useful");
-  useful.innerHTML = "1";
+
+div.horizontally {
+    width: 100%;
+    overflow: auto;
 }
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
+.tabletable {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+
+
+</style>
+{% if messages %}
+{% for message in messages %}
+
+<body id="page-top" class="index" onload="tempclick() setdefault() importantjs()" style="overflow-y:hidden;">
+
+{% endfor %}
+{% else %}
+<body id="page-top" class="index" onload="defaultfunc() setdefault() importantjs()">
+{% endif %}
+<script>
+function defaultfunc() {
+  var body_top = document.getElementById("page-top");
+  if (body_top.style.overflowY =="hidden") {
+    body_top.style.overflowY = "auto";
   }
 }
-window.onload = function () {
-         //Make sure the function fires as soon as the page is loaded
-        setInterval(loadingtable, 200); //Then set it to run again after 0.1s
-
-    }
-function loadingtable() {
-  // console.log("why it doesn't work")
-  // console.log('successfully loading materials');
-    jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){
-        jQuery.get('static/js/loadingornot.txt',function(data2){
-            jQuery.get('static/src/papers/topics_dm.txt',function(data3){
-              var useful = document.getElementById("useful");
-              var old_num = parseInt(useful.innerHTML);
-              var user_input = data3;
-              var user_input_array = user_input.split("\n");
-              var num_of_input = user_input_array.length - 1;
-              var dynamic = data;
-              var dynamic_array = data.split("\n");
-              if (old_num < dynamic_array) {
-                for (var i = old_num-1; i < dynamic_array.length-1; i++) {
-                  var temp = dynamic_array[i];
-                  $('<div class="box" style="text-align:center;"><span>'+temp+'</span></div>').appendTo('body');
-                }
-                useful.innerHTML = dynamic_array.length.toString();
-              } else {
-                return;
-              }
-
-});
-});
-});
-}
-// $(function() {
-//   $('.add-box').click(function() {
-//     $('<div class="box" style="text-align:center;"><span>I like you</span></div>').appendTo('body');
-//
-//   })
-// })
 </script>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container" style="float:left; vertical-align:middle;" id="align1">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="page-scroll">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button> -->
+                <!-- <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+
+                </form> -->
+
+                <a class="navbar-brand page-scroll" style="outline:0!important;"href="/">TOPICMINE</a>
+
+             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form method="post" style="" id="align2">
+                  {% csrf_token %}
+                  {{ form }}
+              </form>
+              <script>
+              var align1= document.getElementById("align1");
+              var align2 = document.getElementById("align2");
+              var height1 = align1.offsetHeight;
+              var height2 = align2.offsetHeight;
+              align2.style.marginTop = ((height1-40)/2).toString() + "px";
+            </script>
+                <!-- <a class="navbar-brand page-scroll" style="outline:0!important; font-size:12px;"href="/">TOPICMINE</a> -->
+                 <ul class="nav navbar-nav">
+
+
+
+                    <li>
+                        <!-- <a class="page-scroll" href="#services">Services</a> -->
+                            <!-- <a class="navbar-brand page-scroll" style="outline:0!important;"href="/">TOPICMINE</a> -->
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header id="section1" >
+        <div class="container">
+            <div class="intro-text" >
+                <div class="intro-lead-in"></div>
+                <div class="intro-heading">Welcome to KDD Demo!</div>
+                <a href="#services" style="background:#BD5D38; border:none;" class="page-scroll btn btn-xl">Let's Explore</a>
+            </div>
+        </div>
+    </header>
+    <div class="box" style="visibility:hidden;" id="section2">
+    <a class="button" id="interesting" href="#popup1">Let me Pop up</a>
+    </div>
+    <script>
+    function tempclick() {
+    document.getElementById("interesting").click();
+    }
+//     function read(){
+//     jQuery.get('static/src/papers/emb_dm_w_tmp.txt',function(data){console.log(data);});
+// }
+//     window.onload = function () {
+//              //Make sure the function fires as soon as the page is loaded
+//             setInterval(read, 1000); //Then set it to run again after ten minutes
+//         }
+  </script>
+    {% if messages %}
+    {% for message in messages %}
+
+    <div id="popup1" class="overlayy">
+        <div class="popupp" id="modaldiv">
+            <h2 class="text-white" style="color:white;">ERROR</h2>
+            <a class="close" id="closing" onclick="closebutton(); return false;" href="#">&times;</a>
+            <script>
+            function closebutton() {
+            var closebutton = document.getElementById("closing");
+            location.href = "table.html";
+            var body_top = document.getElementById("page-top");
+            if (body_top.style.overflowY =="hidden") {
+              body_top.style.overflowY = "auto";
+            }
+          }
+            </script>
+            <div class="content text-white" style="color:white;">
+              {{message}} are not available. Please try other words.
+            </div>
+        </div>
+    </div>
+    <script>
+    var modaldiv = document.getElementById("modaldiv");
+    var body = document.getElementById("page-top");
+    var offsettop = modaldiv.offsetTop;
+    var height = modaldiv.offsetHeight;
+    var allHeight = window.innerHeight;
+    var margin = allHeight/2-offsettop-height/2;
+    modaldiv.style.marginTop = margin.toString() + "px";
+    </script>
+    {% endfor %}
+
+    {% endif %}
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category Representative Phrases</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+            <div class="text-center col-lg-12">
+              <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead id="keyword_title">
+
+                          </thead>
+
+                          <tbody id = "keyword_table">
+
+                          </tbody>
+                        </table>
+                      </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio2">
+        <div class="container col-lg-12" style="margin-top:4em;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Category Phrases Sort By Specificity Range</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+  <div class="text-center col-lg-12">
+                     <div class="table-responsive">
+               <table class="table table-bordered" id="dataAgain" width="100%" cellspacing="0">
+                 <thead id="datatable_title">
+
+                 </thead>
+
+                 <tbody id="datatable_body">
+
+                 </tbody>
+               </table>
+             </div>
+
+
+
+
+
+           </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+
+
+    <div style="width:100%; display:none;" id="loader1">
+    <div class="loader"></div>
+    <div class="loader-label"><span>loading...</span><br><div id="loadingnum">0%</div></div>
+  </div>
+  <div id="loader2"></div>
+  <!-- <div class="box" style="text-align:center;"><span>I like you</span></div> -->
+  <!-- <button class="add-box" style="top:50%;">+</button> -->
+  <div style="display:none;" id="useful">1</div>
+
+  <script>
+  function setdefault() {
+    var useful = document.getElementById("useful");
+    useful.innerHTML = "1";
+  }
+
+
+
+  </script>
+
+  <section id="portfolio" style="height:100%; background-color:#DCC7AA; display:none;" >
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Loading</h2>
+            <h3 class="section-subheading text-muted">This may take a while to load...</h3>
+        </div>
+    </div><!--
+    --><div style="overflow-x:auto;" >
+        <div class="row" style="margin:0 auto!important; width: 1500px;overflow-x:auto;" id="rowlength">
+
+               <!-- <div class="portfolio-item" style="width: 500px!important; display:inline-block;  margin-right:-4px; ">
+
+                   <div class=" portfolio-caption box" style="border-radius:20px;">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class=" portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+             <br>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important;display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div>
+               <div class="portfolio-item" style="width:  500px!important; display:table-cell;">
+                   <div class="portfolio-caption box">
+                       <h4>Round Icons</h4>
+                       <p class="text-muted">Graphic Design</p>
+                   </div>
+               </div> -->
+</div>
+</div>
+   </section>
+
+
+
+
+
+
+
+    <footer id="foots">
+        <div class="container" style="margin:0 auto;">
+
+
+
+                  <div class="social-icons spinned mb-5">
+                       <a class="item facebook" href="https://www.facebook.com/"><em class="fa fa-facebook"></em></a>
+                       <a class="item twitter" href="https://twitter.com/"><em class="fa fa-twitter"></em></a>
+                       <a class="item google" href="https://www.google.com/"><em class="fa fa-google"></em></a>
+                       <a class="item instagram" href="https://www.instagram.com/"><em class="fa fa-instagram"></em></a>
+                   </div>
+<p class="text-muted" style="margin-top:2em;">Copyright &copy; 2019 Han's Group. All rights reserved.</p>
+
+
+        </div>
+    </footer>
+
+
+
+    <!-- jQuery -->
+    <script src="{% static 'nav/vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'nav/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'nav/js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'nav/js/contact_me.js' %}"></script>
+
+    <script src="https://use.fontawesome.com/1179e95335.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'nav/js/agency.min.js' %}"></script>
+     <script src="{% static 'js/table.js' %}"></script>
+   <!-- <script src="{% static 'js/important.js' %}"></script> -->
+    <script src="{% static 'js/loader.js' %}"></script>
+
+
+
+
+
+
+
+</body>
+
 </html>
