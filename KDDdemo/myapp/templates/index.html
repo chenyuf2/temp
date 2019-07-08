@@ -28,7 +28,7 @@
 
   <!-- Theme CSS -->
 
-
+<link href="{% static 'nav/css/agency.min.css' %}" rel="stylesheet">
 </head>
 <style>
   /* Search bar CSS */
@@ -43,7 +43,6 @@
     border-radius:25px;
     outline:none;
     line-height: 40px;
-
   }
   form button {
     height: 44px;
@@ -64,7 +63,6 @@
   background-color: #f44336;
   color: white;
 }
-
 .closebtn {
   margin-left: 15px;
   color: white;
@@ -75,15 +73,12 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
 .closebtn:hover {
   color: black;
 }
-
 .button:hover {
   background: #06D85F;
 }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -94,13 +89,11 @@
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
-
 }
 .overlay:target {
   visibility: visible;
   opacity: 1;
 }
-
 .popup {
   margin: 70px auto;
   padding: 20px;
@@ -111,7 +104,6 @@
   background-color: #d9534f;
   /* transition: all 5s ease-in; */
 }
-
 .popup h2 {
   margin-top: 0;
   color: #333;
@@ -140,7 +132,6 @@
   font-family: "Montserrat";
   font-size: 20px;
 }
-
 @media screen and (max-width: 700px){
   .box{
     width: 70%;
@@ -148,6 +139,125 @@
   .popup{
     width: 70%;
   }
+}
+
+
+.loader {
+  width: 1px;
+  height: 1px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  -webkit-animation: bubble-burst .75s infinite;
+          animation: bubble-burst .75s infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: 5;
+}
+
+.loader-label {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  z-index: 5;
+}
+.loader-label span {
+  font-size: 12px;
+  letter-spacing: 1px;
+  z-index: 5;
+}
+
+@-webkit-keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: scale(130);
+            transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    background: white;
+  }
+}
+.add-box {
+  float: left;
+  width: 400px;
+  height: 100px;
+  background: #BDFCED;
+  color: #00DECF;
+  font-size: 50px;
+  vertical-align: middle;
+  border: 0;
+  cursor: pointer;
+}
+.add-box:focus {
+  outline: 0;
+}
+
+.box {
+
+  animation: expand .5s ease-in-out;
+
+}
+
+.box span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+
+div.horizontally {
+    width: 100%;
+    overflow: auto;
+}
+
+.tabletable {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
 }
 
 
@@ -162,7 +272,7 @@
 {% endif %}
 <!-- <body id="page-top" onload="tempclick()"> -->
   <!-- Header -->
-  <header class="masthead">
+  <header class="masthead" id="heading">
 
     <div class="container text-center my-auto" >
       <h1 class="mb-1 text-white" style="font-size:4vw;"> TOPIC<span class="text-white">MINE</span></h1>
@@ -189,7 +299,9 @@
     <div class="box" style="visibility:hidden;">
     <a class="button" id="interesting" href="#popup1">Let me Pop up</a>
 </div>
+
 <script>
+
 function tempclick() {
   document.getElementById("interesting").click();
 }</script>
@@ -223,8 +335,85 @@ modaldiv.style.marginTop = margin.toString() + "px";
 
   </header>
 
+      <div style="width:100%; display:none;" id="loader1">
+      <div class="loader"></div>
+      <div class="loader-label"><span>loading...</span><br><div id="loadingnum">0%</div></div>
+    </div>
+    <div id="loader2"></div>
+    <!-- <div class="box" style="text-align:center;"><span>I like you</span></div> -->
+    <!-- <button class="add-box" style="top:50%;">+</button> -->
+    <div style="display:none;" id="useful">1</div>
+
+    <script>
+
+    function setdefault() {
+      var useful = document.getElementById("useful");
+      useful.innerHTML = "1";
+    }
+  setdefault();
+
+
+    </script>
+
+    <section id="portfolio" style="height:100%; background-color:#DCC7AA; display:none;" >
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading">Loading</h2>
+              <h3 class="section-subheading text-muted">This may take a while to load...</h3>
+          </div>
+      </div><!--
+      --><div style="overflow-x:auto;" >
+          <div class="row" style="margin:0 auto!important; width: 1500px;overflow-x:auto;" id="rowlength">
+
+                 <!-- <div class="portfolio-item" style="width: 500px!important; display:inline-block;  margin-right:-4px; ">
+
+                     <div class=" portfolio-caption box" style="border-radius:20px;">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+                 <div class=" portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+                 <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+               <br>
+                 <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+                 <div class="portfolio-item" style="width:  500px!important;display:inline-block;  margin-right:-4px;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+                 <div class="portfolio-item" style="width:  500px!important; display:inline-block;  margin-right:-4px;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div>
+                 <div class="portfolio-item" style="width:  500px!important; display:table-cell;">
+                     <div class="portfolio-caption box">
+                         <h4>Round Icons</h4>
+                         <p class="text-muted">Graphic Design</p>
+                     </div>
+                 </div> -->
+  </div>
+  </div>
+     </section>
   <!-- Footer -->
-  <footer class="text-center" style="bottom: 0; width: 100%; position:absolute;">
+  <footer class="text-center" style="bottom: 0; width: 100%; position:absolute;" id="foots">
       <ul class="list-inline mb-3">
         <li class="list-inline-item">
           <a class="text-white mr-3" href="https://www.facebook.com/">
@@ -273,6 +462,9 @@ modaldiv.style.marginTop = margin.toString() + "px";
   <script src="{% static 'js/clickbutton.js' %}"></script>
   <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="{% static 'js/indexloading.js' %}"></script>
+  <script src="{% static 'js/jquery.countup.js' %}"></script>
+
 
 </body>
 
