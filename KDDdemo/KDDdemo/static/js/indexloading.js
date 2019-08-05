@@ -30,6 +30,7 @@ console.log(data);
   // console.log(loading);
   if (loading == "false") {
     // show table results
+    if (document.getElementById("useful").innerHTML == "1") {
     ids = ["heading","foots"];
     for (var i = 0; i < ids.length; i++) {
       document.getElementById(ids[i]).style.display = "block";
@@ -40,6 +41,7 @@ console.log(data);
         document.getElementById("portfolio").style.display = "none";
       var useful =document.getElementById("useful");
       useful.innerHTML = "1";
+    }
       // console.log("god");
   } else {
     // if (document.getElementById("useful").innerHTML == "1" && document.getElementById("mainNav").style.display == "block") {
@@ -64,10 +66,10 @@ page.style.backgroundColor="#DCC7AA";
    var num_of_input = user_input_array.length - 1;
    var dynamic = data;
    var dynamic_array = data.split("\n");
-   if (dynamic_array.length > 1) {
+   // if (dynamic_array.length > 1) {
      var rowlength = document.getElementById("rowlength");
      rowlength.style.width = (500*num_of_input).toString() + "px";
-   }
+   // }
    console.log(dynamic_array.length);
    console.log(old_num);
    // console.log(old_num);
@@ -90,7 +92,7 @@ page.style.backgroundColor="#DCC7AA";
      }
      var current_loading = document.getElementById("loadingnum");
      var current_loading_num = parseInt(current_loading.innerHTML);
-     var percentage = Math.floor((dynamic_array.length-1)*100/(num_of_input * 2));
+     var percentage = Math.floor((dynamic_array.length-1)*100/(num_of_input * 5));
      if (current_loading_num <= percentage) {
        for (var  i = current_loading_num; i < percentage; i++) {
          current_loading.innerHTML = i.toString() + "%";

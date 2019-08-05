@@ -192,18 +192,21 @@ def aggregate_ranking(sim, cap, word_cap, upper, lower, topic, id2topic, idx2wor
     # cap_cand = cap[:100]
     simrank2id = np.ones(len(sim)) * np.inf
     caprank2id = np.ones(len(sim)) * np.inf
-    for i, w in enumerate(sim[:200]):
+    for i, w in enumerate(sim):
+        if w == 0:
+            continue
         simrank2id[w] = i + 1
     topic_cap = word_cap_dict[topic]
     for i, w in enumerate(cap):
         if pretrain == '0':
-            # caprank2id[w] = i + 1
+            caprank2id[w] = i + 1
             if word_cap[w] < lower*topic_cap or word_cap[w] > upper*topic_cap :
                 caprank2id[w] = np.inf
             else:
                 caprank2id[w] = 1.0
     if pretrain == '0':
         agg_rank = simrank2id * caprank2id
+        agg_rank[0] = np.inf
         final_rank = np.argsort(agg_rank)
         final_rank_words = [idx2word[idx] for idx in final_rank[:30]]
     else:

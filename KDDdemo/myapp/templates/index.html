@@ -264,11 +264,11 @@ div.horizontally {
   </style>
   {% if messages %}
 {% for message in messages %}
-<body id="page-top" onload="tempclick()">
+<body id="page-top" onload="tempclick() setone()">
 
 {% endfor %}
 {% else %}
-<body id="page-top">
+<body id="page-top" onload="setone()">
 {% endif %}
 <!-- <body id="page-top" onload="tempclick()"> -->
   <!-- Header -->
@@ -301,7 +301,9 @@ div.horizontally {
 </div>
 
 <script>
-
+function setone() {
+  document.getElementById("useful").innerHTML = "1";
+}
 function tempclick() {
   document.getElementById("interesting").click();
 }</script>
@@ -327,6 +329,7 @@ var height = modaldiv.offsetHeight;
 var allHeight = body.offsetHeight;
 var margin = allHeight/2-offsettop-height/2;
 modaldiv.style.marginTop = margin.toString() + "px";
+window.location.href = "#popup1";
 </script>
 {% endfor %}
 
@@ -358,12 +361,12 @@ modaldiv.style.marginTop = margin.toString() + "px";
     <section id="portfolio" style="height:100%; background-color:#DCC7AA; display:none;" >
       <div class="row">
           <div class="col-lg-12 text-center">
-              <h2 class="section-heading">Loading</h2>
+              <h2 class="section-heading">Embedding Training</h2>
               <h3 class="section-subheading text-muted">This may take a while to load...</h3>
           </div>
       </div><!--
       --><div style="overflow-x:auto;" >
-          <div class="row" style="margin:0 auto!important; width: 1500px;overflow-x:auto;" id="rowlength">
+          <div class="row" style="margin:0 auto!important; overflow-x:auto;" id="rowlength">
 
                  <!-- <div class="portfolio-item" style="width: 500px!important; display:inline-block;  margin-right:-4px; ">
 

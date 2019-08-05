@@ -19,7 +19,7 @@ def index(request):
     print("step 1")
     if request.method == 'POST':
         print("step 2")
-        country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+        country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
         form = ContactForm(request.POST, data_list = country_list)
         if form.is_valid():
             print("step3")
@@ -68,7 +68,7 @@ def index(request):
                 emptytxt()
                 return redirect('table.html', {'form':form})
     print("step 6")
-    country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+    country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
     form = ContactForm(data_list = country_list)
     tempfile =  open("KDDdemo/static/js/loadingornot3.txt","w")
     tempfile.write("false")
@@ -80,7 +80,7 @@ def index(request):
 #     tempfile.write("false")
 #     tempfile.close()
 #     if request.method == "POST":
-#         country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+#         country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering', 'china, germany, canada')
 #         form = ContactForm(request.POST, data_list = country_list)
 #         if form.is_valid():
 #             input = form.cleaned_data['temp']
@@ -130,7 +130,7 @@ def index(request):
 #                 tempfile.write("false")
 #                 tempfile.close()
 #                 return redirect('loader.html')
-#     country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+#     country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering', 'china, germany, canada')
 #     form = ContactForm(data_list = country_list)
 #     return render(request, 'index.html', {'form': form})
 def contact(request):
@@ -141,7 +141,7 @@ def contact(request):
     print("step 1")
     if request.method == 'POST':
         print("step 2")
-        country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+        country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
         form = ContactForm(request.POST, data_list = country_list)
         if form.is_valid():
             print("step3")
@@ -190,7 +190,7 @@ def contact(request):
                 emptytxt()
                 return redirect('loader.html', {'form':form})
     print("step 6")
-    country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+    country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
     form = ContactForm(data_list = country_list)
     tempfile =  open("KDDdemo/static/js/loadingornot.txt","w")
     tempfile.write("false")
@@ -207,7 +207,7 @@ def loader(request):
     print("step 1")
     if request.method == 'POST':
         print("step 2")
-        country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+        country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
         form = ContactForm(request.POST, data_list = country_list)
         if form.is_valid():
             print("step3")
@@ -256,7 +256,7 @@ def loader(request):
                 emptytxt()
                 return redirect('table.html', {'form':form})
     print("step 6")
-    country_list = ('data mining,text mining,machine learning', 'physics, computer science, electrical engineering')
+    country_list = ('data mining,natural language processing,machine learning', 'research papers, demo, tutorial', 'truth discovery, text mining, pattern mining','wireless networks, mobile networks, sensor networks','parsing, word embedding, text summarization, information extraction, sentiment analysis','deep learning, transfer learning, reinforcement learning','algebra, geometry','computer vision, computer graphics, robotics')
     form = ContactForm(data_list = country_list)
     tempfile =  open("KDDdemo/static/js/loadingornot2.txt","w")
     tempfile.write("false")
